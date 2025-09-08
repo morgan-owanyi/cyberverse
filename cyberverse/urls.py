@@ -21,4 +21,9 @@ from awareness import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name='home'),
+    path('modules/', views.modules, name='modules'),
+    path('quizzes/', views.quizzes, name='quizzes'),
+    path('resources/', views.resources, name='resources'),
+    path('feedback/', views.feedback, name='feedback'),
+    path('impact/', views.impact, name='impact'),
 ]
