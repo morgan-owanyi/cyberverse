@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 from django.db import models
 
-class Tutorial(models.Model):
+class modules(models.Model):
     LEVEL_CHOICES = [
         ('Beginner', 'Beginner'),
         ('Intermediate', 'Intermediate'),
@@ -17,3 +17,13 @@ class Tutorial(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Feedback(models.Model):
+    name = models.CharField(max_length=100)
+    email = models.EmailField()
+    message = models.TextField()
+    date_submitted = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.name} - {self.email}"

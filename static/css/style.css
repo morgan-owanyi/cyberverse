@@ -1,0 +1,51 @@
+/* === Cyberverse Global Theme === */
+body {
+  background-color: #0b0c10;
+  color: #c5c6c7;
+  font-family: "Poppins", sans-serif;
+}
+
+.navbar {
+  background: linear-gradient(90deg, #000, #111);
+}
+
+.nav-link {
+  color: #c5c6c7 !important;
+  transition: 0.3s;
+}
+
+.nav-link:hover {
+  color: #00ff88 !important;
+  text-shadow: 0 0 10px #00ff88;
+}
+
+.card {
+  background-color: #141414;
+  color: #c5c6c7;
+  border: 1px solid rgba(0, 255, 136, 0.2);
+  transition: 0.3s;
+}
+
+.card:hover {
+  box-shadow: 0 0 15px rgba(0, 255, 136, 0.3);
+  transform: translateY(-3px);
+}
+
+.btn-outline-dark {
+  border-color: #00ff88;
+  color: #00ff88;
+}
+
+.btn-outline-dark:hover {
+  background-color: #00ff88;
+  color: #000;
+}
+
+footer {
+  color: #888;
+  border-top: 1px solid rgba(0, 255, 136, 0.2);
+}
+
+h1, h2, h3, h4 {
+  color: #00ff88;
+}

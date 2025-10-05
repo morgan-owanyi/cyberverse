@@ -1,11 +1,22 @@
 {% extends 'base.html' %}
-{% block content %}
-<h1>Resources</h1>
-<p>Helpful tools and websites to improve your cybersecurity.</p>
 
-<ul>
-    <li><a href="https://haveibeenpwned.com/" target="_blank">Have I Been Pwned</a></li>
-    <li><a href="https://www.lastpass.com/" target="_blank">Password Managers</a></li>
-    <li><a href="https://www.us-cert.gov/" target="_blank">US-CERT Alerts</a></li>
-</ul>
+{% block content %}
+<div class="container mt-4">
+  <h2 class="mb-3">Cybersecurity Resources</h2>
+  <p class="lead text-muted">Explore these top platforms to learn, practice, and stay updated in cybersecurity.</p>
+
+  <div class="row">
+    {% for resource in resources %}
+      <div class="col-md-6 col-lg-4 mb-4">
+        <div class="card h-100 shadow-sm border-0">
+          <div class="card-body">
+            <h5 class="card-title text-primary">{{ resource.title }}</h5>
+            <p class="card-text">{{ resource.description }}</p>
+            <a href="{{ resource.link }}" target="_blank" class="btn btn-outline-dark btn-sm">Visit Site</a>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
 {% endblock %}

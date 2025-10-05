@@ -1,11 +1,23 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>Feedback</h1>
-<p>We’d love to hear from you! Share your thoughts below:</p>
+<div class="container mt-5">
+  <h2 class="text-success mb-4 text-center">We Value Your Feedback</h2>
 
-<form method="post">
-    {% csrf_token %}
-    <textarea name="feedback" rows="4" class="form-control" placeholder="Enter your feedback..."></textarea><br>
-    <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+  {% if success %}
+  <div class="alert alert-success text-center" role="alert">
+    Thank you! Your feedback has been submitted successfully.
+  </div>
+  {% endif %}
+
+  <div class="card shadow p-4 mx-auto" style="max-width: 600px;">
+    <form method="POST">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <div class="text-center mt-3">
+        <button type="submit" class="btn btn-outline-dark">Submit Feedback</button>
+      </div>
+    </form>
+  </div>
+</div>
 {% endblock %}
+

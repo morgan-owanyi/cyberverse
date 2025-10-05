@@ -5,5 +5,5 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('modules/', views.modules, name='modules'),
     path('quizzes/', views.quizzes, name='quizzes'),
-
+    path('feedback/', views.feedback, name='feedback'),
 ]

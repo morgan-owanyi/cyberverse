@@ -1,0 +1,125 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+<style>
+/* Neon glow and animations */
+@keyframes flicker {
+  0%, 18%, 22%, 25%, 53%, 57%, 100% {
+    text-shadow: 0 0 4px #00ff99, 0 0 11px #00ff99, 0 0 19px #00ff99, 0 0 40px #00ff99;
+  }
+  20%, 24%, 55% {
+    text-shadow: none;
+  }
+}
+
+@keyframes typewriter {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink {
+  from, to { border-color: transparent; }
+  50% { border-color: #00ff99; }
+}
+
+.typewriter {
+  color: #00ff99;
+  font-family: monospace;
+  overflow: hidden;
+  border-right: 3px solid #00ff99;
+  white-space: nowrap;
+  width: 0;
+  animation:
+    typewriter 3s steps(30, end) 1s 1 normal both,
+    blink .75s step-end infinite;
+}
+
+.glow-text {
+  color: #00ff99;
+  animation: flicker 1.5s infinite alternate;
+}
+
+.btn-outline-success:hover {
+  background-color: #00ff99;
+  color: black;
+  box-shadow: 0 0 15px #00ff99;
+  transition: 0.3s ease-in-out;
+}
+</style>
+
+<div class="container py-5">
+  <div class="row align-items-center">
+    <div class="col-md-4 text-center mb-4 mb-md-0">
+      <img src="{% static 'images/developer.jpg' %}" alt="Developer Photo"
+           class="rounded-circle shadow-lg border border-success" width="220" height="220">
+    </div>
+
+    <div class="col-md-8 text-light">
+      <h2 class="glow-text fw-bold mb-2">About the Developer</h2>
+      <h4 class="typewriter mb-4">Cybersecurity Enthusiast | Developer | Innovator</h4>
+
+      <p>
+        Hello! 👋 I'm <strong>Morgan Owanyi</strong>, a passionate cybersecurity enthusiast and aspiring penetration tester.
+        I created <span class="text-success">Cyberverse</span> as part of my mission to make cybersecurity education
+        accessible and engaging for students. This project showcases my skills in <strong>Python, Django, and web development</strong>,
+        while addressing the growing need for cybersecurity awareness in the digital age.
+      </p>
+
+      <p>
+        I believe that empowering young people with cybersecurity knowledge is essential for building a safer digital future.
+        Through this platform, learners can explore interactive modules, take quizzes, and practice identifying online threats in a fun and practical way.
+      </p>
+
+      <h4 class="mt-4 text-success">Technologies Used</h4>
+      <ul>
+        <li>Django (Python Web Framework)</li>
+        <li>Bootstrap for responsive design</li>
+        <li>HTML5 & CSS3 for front-end styling</li>
+        <li>SQLite / MySQL for data storage</li>
+      </ul>
+
+      <h4 class="mt-4 text-success">My Vision</h4>
+      <p>
+        To inspire and equip students across Africa with the knowledge and tools to defend against cyber threats and to promote a culture of digital safety.
+      </p>
+
+      <!-- Timeline-->
+       <h4 class="mt-5 text-success glow-text">My Journey</h4>
+<div class="timeline mt-3">
+  <div class="timeline-item mb-4 p-3 shadow rounded" style="background-color: #111; border-left: 4px solid #00ff99;">
+    <h5 class="text-success">2023 - First Steps in Cybersecurity</h5>
+    <p>I became fascinated by how systems work and started learning the basics of cybersecurity through online tutorials, CTF challenges, and penetration testing labs.</p>
+  </div>
+  <div class="timeline-item mb-4 p-3 shadow rounded" style="background-color: #111; border-left: 4px solid #00ff99;">
+    <h5 class="text-success">2024 - Building Projects</h5>
+    <p>I began creating small projects to apply what I learned, including awareness campaigns and labs to practice ethical hacking skills.</p>
+  </div>
+  <div class="timeline-item mb-4 p-3 shadow rounded" style="background-color: #111; border-left: 4px solid #00ff99;">
+    <h5 class="text-success">2025 - Cyberverse</h5>
+    <p>Realizing the lack of accessible learning platforms for students in my community, I built <span class="text-success">Cyberverse</span> to educate peers about cybersecurity threats and safe online practices.</p>
+  </div>
+</div>
+
+<style>
+.timeline-item {
+    transition: 0.3s ease;
+}
+.timeline-item:hover {
+    border-left-color: #00ffcc;
+    box-shadow: 0 0 15px #00ff99;
+    transform: translateY(-2px);
+}
+</style>
+
+
+      <div class="mt-4">
+        <a href="mailto:owanyimorgan@gmail.com" class="btn btn-outline-dark me-3">Contact Me</a>
+        <a href="https://github.com/morgan-owanyi" target="_blank" class="btn btn-outline-success">View My GitHub</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+

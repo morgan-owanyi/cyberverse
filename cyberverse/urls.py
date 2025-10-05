@@ -25,6 +25,6 @@ urlpatterns = [
     path('quizzes/', views.quizzes, name='quizzes'),
     path('resources/', views.resources, name='resources'),
     path('feedback/', views.feedback, name='feedback'),
-    path('impact/', views.impact, name='impact'),
-       path('tutorials/', views.tutorial_list, name='tutorial_list'),
+    path('about/', views.about, name='about'),
+
 ]

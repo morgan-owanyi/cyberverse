@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from awareness.models import Tutorial
+from awareness.models import modules
 
 # Create your views here.
 
@@ -73,15 +73,68 @@ def quizzes(request):
     return render(request, "quizzes.html", {"quizzes": quizzes_list, "score": score, "total": total})
 
 
+from django.shortcuts import render
+
 def resources(request):
-    return render(request, 'resources.html')
+    resources_list = [
+        {
+            "title": "TryHackMe",
+            "description": "An online platform that teaches cybersecurity through interactive hands-on labs.",
+            "link": "https://tryhackme.com",
+        },
+        {
+            "title": "Hack The Box",
+            "description": "A penetration testing lab and cybersecurity training platform.",
+            "link": "https://www.hackthebox.com",
+        },
+        {
+            "title": "OWASP Top 10",
+            "description": "A list of the most critical web application security risks maintained by OWASP.",
+            "link": "https://owasp.org/www-project-top-ten/",
+        },
+        {
+            "title": "Cybersecurity & Infrastructure Security Agency (CISA)",
+            "description": "Official U.S. government cybersecurity tips and resources.",
+            "link": "https://www.cisa.gov/",
+        },
+        {
+            "title": "Google Phishing Quiz",
+            "description": "A fun and interactive way to test your ability to spot phishing emails.",
+            "link": "https://phishingquiz.withgoogle.com/",
+        },
+        {
+            "title": "PortSwigger Web Security Academy",
+            "description": "Free web security learning platform by the creators of Burp Suite.",
+            "link": "https://portswigger.net/web-security",
+        },
+        {
+            "title": "Cybrary",
+            "description": "Free and paid online cybersecurity courses for all levels.",
+            "link": "https://www.cybrary.it/",
+        },
+    ]
+
+    return render(request, "resources.html", {"resources": resources_list})
+
+
+from django.shortcuts import render, redirect
+from .forms import FeedbackForm
 
 def feedback(request):
-    return render(request, 'feedback.html')
+    if request.method == "POST":
+        form = FeedbackForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return render(request, "feedback.html", {
+                "form": FeedbackForm(),
+                "success": True
+            })
+    else:
+        form = FeedbackForm()
+    return render(request, "feedback.html", {"form": form})
 
-def impact(request):
-    return render(request, 'impact.html')          
 
-def tutorial_list(request):
-    tutorials = Tutorial.objects.all().order_by('-created_at')
-    return render(request, 'awareness/tutorial_list.html', {'tutorials': tutorials})  
+def about(request):
+    return render(request, 'about.html')
+
+ 
