@@ -1,33 +1,19 @@
 {% extends 'base.html' %}
-
 {% block content %}
-<div class="text-center mt-5">
-    <h1>Welcome to Cyberverse</h1>
-    <p class="lead">Building a safer digital campus for students</p>
-</div>
+<div class="container py-5 text-center">
+  <h2 class="text-success fw-bold mb-4">Welcome to Cyberverse</h2>
+  <p class="mb-4">Scan URLs to see if they are safe online.</p>
 
-<div class="container mt-4">
-  <div class="text-center mb-5">
-    <p class="lead">
-      CyberVerse is a cybersecurity awareness platform where students can learn,
-      test their skills with quizzes, explore learning modules, and check the safety of URLs.
-    </p>
-  </div>
-
-  <!-- URL Scanner Section -->
-  <div class="card shadow-sm p-4 mb-4">
-    <h4 class="mb-3">🔎 Scan a URL</h4>
-    <form method="post">
+  <div class="card p-4 mx-auto" style="max-width: 600px;">
+    <form method="POST">
       {% csrf_token %}
-      <div class="input-group">
-        <input type="text" name="url" class="form-control" placeholder="Enter URL (e.g., https://example.com)">
-        <button type="submit" class="btn btn-primary">Check</button>
-      </div>
+      <input type="url" name="url" class="form-control mb-3" placeholder="Enter URL to scan" required>
+      <button type="submit" class="btn btn-outline-dark w-100">Scan URL</button>
     </form>
 
-    {% if result %}
-      <div class="alert alert-info mt-3">
-        {{ result }}
+    {% if scan_result %}
+      <div class="alert mt-3 {% if '⚠️' in scan_result %}alert-danger{% else %}alert-success{% endif %}">
+        {{ scan_result }}
       </div>
     {% endif %}
   </div>

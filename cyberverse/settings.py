@@ -23,6 +23,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-cdar0$js%f&9luibwcg5lcrfe6s8alss@3_^qx5_i3=-o-&+)7'
 
+VIRUSTOTAL_API_KEY = 'a20403b1708511a28c861717abeb9bbee540fc4ba1fc31fc1a124241a4f6b40f'
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -124,3 +126,6 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# API KEYS
+VIRUSTOTAL_API_KEY = 'a20403b1708511a28c861717abeb9bbee540fc4ba1fc31fc1a124241a4f6b40f'

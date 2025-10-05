@@ -3,8 +3,40 @@ from awareness.models import modules
 
 # Create your views here.
 
+import requests
+import base64
+from django.shortcuts import render
+from django.conf import settings
+
 def home(request):
-    return render(request, 'home.html')
+    scan_result = None
+
+    if request.method == "POST":
+        url_to_scan = request.POST.get("url")
+        if url_to_scan:
+            headers = {"x-apikey": settings.VIRUSTOTAL_API_KEY}
+
+            # Step 1: Encode URL
+            url_id = base64.urlsafe_b64encode(url_to_scan.encode()).decode().strip("=")
+
+            # Step 2: GET analysis result
+            response = requests.get(f"https://www.virustotal.com/api/v3/urls/{url_id}", headers=headers)
+
+            if response.status_code == 200:
+                data = response.json()
+                stats = data.get("data", {}).get("attributes", {}).get("last_analysis_stats", {})
+                positives = stats.get("malicious", 0)
+
+                if positives > 0:
+                    scan_result = f"⚠️ The URL '{url_to_scan}' is potentially malicious! Detected by {positives} engines."
+                else:
+                    scan_result = f"✅ The URL '{url_to_scan}' appears safe."
+            else:
+                scan_result = f"Error scanning the URL. Status code: {response.status_code}"
+
+    return render(request, "home.html", {"scan_result": scan_result})
+
+
                 
 
 
