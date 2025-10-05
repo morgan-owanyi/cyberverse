@@ -1,12 +1,26 @@
 {% extends 'base.html' %}
-{% block content %}
-<h1>Learning Modules</h1>
-<p>Explore cybersecurity topics made simple for students.</p>
 
-<ul>
-    <li>Password Security</li>
-    <li>Phishing Awareness</li>
-    <li>Safe Browsing</li>
-    <li>Social Media Safety</li>
-</ul>
+{% block content %}
+<div class="container mt-4">
+  <h2 class="mb-3">Cybersecurity Learning Modules</h2>
+  <p class="lead">Explore different modules to strengthen your cybersecurity knowledge.</p>
+
+  <div class="row">
+    {% for module in modules %}
+      <div class="col-md-6 mb-4">
+        <div class="card shadow-sm h-100">
+          <div class="card-body">
+            <h5 class="card-title">{{ module.title }}</h5>
+            <p class="card-text">{{ module.description }}</p>
+            <span class="badge bg-info">{{ module.difficulty }}</span>
+            <a href="{{ module.link }}" target="_blank" class="btn btn-outline-primary btn-sm float-end">
+  Start Module
+</a>
+
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
 {% endblock %}

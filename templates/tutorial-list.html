@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+  <h2 class="mb-3">Cybersecurity Tutorials</h2>
+  {% for tutorial in tutorials %}
+    <div class="card mb-3">
+      <div class="card-body">
+        <h5 class="card-title">{{ tutorial.title }}</h5>
+        <p class="card-text">{{ tutorial.content|truncatewords:40 }}</p>
+        <span class="badge bg-primary">{{ tutorial.difficulty }}</span>
+        <small class="text-muted float-end">{{ tutorial.created_at|date:"M d, Y" }}</small>
+      </div>
+    </div>
+  {% empty %}
+    <p>No tutorials available yet.</p>
+  {% endfor %}
+</div>
+{% endblock %}

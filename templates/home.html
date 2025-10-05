@@ -5,4 +5,32 @@
     <h1>Welcome to Cyberverse</h1>
     <p class="lead">Building a safer digital campus for students</p>
 </div>
+
+<div class="container mt-4">
+  <div class="text-center mb-5">
+    <p class="lead">
+      CyberVerse is a cybersecurity awareness platform where students can learn,
+      test their skills with quizzes, explore learning modules, and check the safety of URLs.
+    </p>
+  </div>
+
+  <!-- URL Scanner Section -->
+  <div class="card shadow-sm p-4 mb-4">
+    <h4 class="mb-3">🔎 Scan a URL</h4>
+    <form method="post">
+      {% csrf_token %}
+      <div class="input-group">
+        <input type="text" name="url" class="form-control" placeholder="Enter URL (e.g., https://example.com)">
+        <button type="submit" class="btn btn-primary">Check</button>
+      </div>
+    </form>
+
+    {% if result %}
+      <div class="alert alert-info mt-3">
+        {{ result }}
+      </div>
+    {% endif %}
+  </div>
+</div>
+
 {% endblock %}

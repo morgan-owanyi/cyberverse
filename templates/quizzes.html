@@ -1,7 +1,35 @@
 {% extends 'base.html' %}
-{% block content %}
-<h1>Quizzes</h1>
-<p>Test your knowledge with interactive cybersecurity quizzes.</p>
 
-<p>[Quiz content will go here]</p>
+{% block content %}
+<div class="container mt-4">
+  <h2 class="mb-3">Cybersecurity Quizzes</h2>
+  <p class="lead">Test your knowledge with these beginner-friendly questions.</p>
+
+  <form method="post">
+    {% csrf_token %}
+    {% for quiz in quizzes %}
+      <div class="card mb-3">
+        <div class="card-body">
+          <h5 class="card-title">Q{{ forloop.counter }}: {{ quiz.question }}</h5>
+          {% for option in quiz.options %}
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="q{{ forloop.parentloop.counter0 }}" id="q{{ forloop.parentloop.counter0 }}o{{ forloop.counter0 }}" value="{{ forloop.counter0 }}">
+              <label class="form-check-label" for="q{{ forloop.parentloop.counter0 }}o{{ forloop.counter0 }}">
+                {{ option }}
+              </label>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    {% endfor %}
+
+    <button type="submit" class="btn btn-primary">Submit Quiz</button>
+  </form>
+
+  {% if score is not None %}
+    <div class="alert alert-success mt-4">
+      You scored {{ score }} out of {{ total }}!
+    </div>
+  {% endif %}
+</div>
 {% endblock %}
