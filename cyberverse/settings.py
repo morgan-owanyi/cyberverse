@@ -26,9 +26,9 @@ SECRET_KEY = 'django-insecure-cdar0$js%f&9luibwcg5lcrfe6s8alss@3_^qx5_i3=-o-&+)7
 VIRUSTOTAL_API_KEY = 'a20403b1708511a28c861717abeb9bbee540fc4ba1fc31fc1a124241a4f6b40f'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['myappname.com', '127.0.0.1']
 
 
 # Application definition
