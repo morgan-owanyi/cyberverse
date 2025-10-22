@@ -28,7 +28,7 @@ VIRUSTOTAL_API_KEY = 'a20403b1708511a28c861717abeb9bbee540fc4ba1fc31fc1a124241a4
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['cyberverse.onrender.com']
+ALLOWED_HOSTS = ['cyberverse.onrender.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
