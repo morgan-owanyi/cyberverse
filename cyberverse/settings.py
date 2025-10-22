@@ -127,5 +127,4 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# API KEYS
-VIRUSTOTAL_API_KEY = 'a20403b1708511a28c861717abeb9bbee540fc4ba1fc31fc1a124241a4f6b40f'
+
